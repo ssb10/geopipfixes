@@ -1,0 +1,23 @@
+"""
+Description:
+This Script is used for polling servers on port 12679 
+with help of openconnection() API in repyv2 
+and terminates connection
+after the time-out
+
+Arguments:
+
+FQDN of the server.
+
+"""
+def poll(servername):
+  myip = getmyip()
+  myport = 12346
+  serverip = gethostbyname(servername)
+  serverport = 12679
+  try:
+    socket = openconnection(serverip,serverport,myip,myport,1)
+    return "server is alive"
+    socket.close()
+  except Exception, err:
+    return str(err)
